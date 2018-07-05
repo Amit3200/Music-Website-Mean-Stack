@@ -1,0 +1,194 @@
+:root {
+  box-sizing: border-box;
+  font: 16px/1.6rem sans-serif;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+  --main-bg-color:     #000;
+  --player-bg-color:   #101215;
+  --dark-red:          #3b2d2a;
+  --primary:           #e04f26;
+}
+
+body, button, input, select, textarea, pre, ul, ol { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6, p, dl, ol, ul, dt, dd {margin: 0;}
+ul,ol{list-style: none;}
+button, input, select, textarea { font-family: "Lato",sans-serif; font-size: 100%; }
+article, aside, details, figcaption, figure, footer, header, main, nav, section, summary { display: block; }
+img,svg{border:none; max-width:100%;}
+button{outline: none; border: 0; appearance: none; overflow: hidden; background: transparent; cursor: pointer;}
+
+#musik-player{
+  background-color: var(--player-bg-color);
+  border:0;
+  height:100vh;
+  width:100vw;
+  margin:0;
+  position: fixed;
+  overflow: hidden;
+}
+
+#musik-player_cover{
+  z-index: 1;
+  position: relative;
+  height: 43%;
+}
+#musik-player_cover-menu{
+  z-index: 10;
+  position: absolute;
+  top:0;
+  width:100%;
+  padding: 1rem;
+}
+#musik-player_cover-menu button, #musik-player_cover-menu h1{display: inline-block; vertical-align: top;}
+#musik-player_cover-menu button{position: relative; width:30px; height:24px;}
+#musik-player_cover-menu button:before{
+  content: "";
+  opacity: .6; position: absolute; left: 0; top: 3px;
+  width: 25px; height: 2px;
+  background: var(--primary);
+  box-shadow: -3px 0.37em 0 0 var(--primary), -6px 0.75em 0 0 var(--primary);
+  transition: all .3s;
+}
+#musik-player_cover-menu button:hover:before{box-shadow: 0 0.37em 0 0 var(--primary), 0 0.75em 0 0 var(--primary);opacity: 1;}
+#musik-player_cover-menu h1{color:#FFF;font-weight: normal;font-size: 1.5rem;position: relative;}
+#musik-player_cover-menu h1:after{color:inherit; font-size: .9rem; opacity: .8; content: attr(data-album); position: absolute; left: 0; bottom: -1.5rem;}
+#musik-player_cover-image{
+  z-index: 2; position: absolute; top:0;
+  height: 100%; width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+#musik-player_cover-fade{
+  z-index: 4; position: absolute; bottom:0;
+  height: 4rem; width: 100%;
+  background: linear-gradient(rgba(0,0,0,0), rgba(16,18,21,1));
+}
+
+#musik-player_title{padding:1.5rem;text-align: center;color:#eaeaea;font-size: 1rem;}
+#musik-player_dial{
+  position: absolute; z-index: 20; top: 60%; left:0;
+  background-color: #212121;
+  height: 80px; width: 220px;
+  border-top-right-radius: 40px; border-bottom-right-radius: 40px;
+}
+#musik-player_dial_button{
+  position: absolute; z-index: 21; top: 5px; right: 5px;
+  height: 70px; width: 70px; background-color: var(--main-bg-color);
+  border-radius: 50%; font-size: 2rem; text-align: center;
+  line-height: 1.5rem;
+  opacity: .7;
+  transition: opacity .3s;
+}
+#musik-player_dial_button:hover{opacity: 1;}
+#musik-player_dial_button svg{fill:var(--primary); height:45px; width:45px;}
+#musik-player_dial_button svg#play{position: absolute;top:13px;left: 15px;transition: all .3s;}
+#musik-player_dial_button svg#pause{position: absolute;top:70px;left: 13px;transition: all .3s;}
+#musik-player_dial_button.active svg#play{top:-50px;}
+#musik-player_dial_button.active svg#pause{top:13px;}
+
+#musik-player_seek{
+  position: absolute; z-index: 1; top: 55%; left:180px; margin-left:-90px;height: 180px; width: 180px; border-radius: 50%; overflow: hidden;
+}
+#musik-player_seek-base{
+  position: absolute; z-index: 6; top:-3px; left:3px;
+  height: 178px; width: 178px;border-radius: 50%; background-color: #0b0d0e;
+}
+#musik-player_seek-mask{
+  position: absolute; z-index: 4; top:23px; left:-13px; transform: rotate(-30deg);
+  height: 110px; width: 190px; background-color: var(--player-bg-color);
+}
+#musik-player_seek-current{
+  position: absolute; z-index: 2; top:2px; left:50%; height: 100%; width: 0%; background-color: var(--primary);
+}
+#musik-player_seek-start{
+  position: absolute; z-index: 12; bottom:5px; left:49%;
+  color:#FFF;font-size:.8rem;
+}
+#musik-player_seek-duration{
+  position: absolute; z-index: 14; top:69px; right:11px;
+  color:#FFF;font-size:.8rem;
+}
+.musik-arrows{display: inline-block;float:left; padding:1rem .1rem 0 1rem; cursor: pointer;}
+.musik-arrows svg{
+  height:36px; width: 36px; fill: #FFF; opacity: .7; transition: opactiy .3s; margin-top: 5px;
+}
+.musik-arrows svg:hover{opacity: 1;}
+
+#musik-player_share{text-align: center; position: absolute; bottom: 0; padding: 1rem 0; width: 100%;}
+.musik-player_social-icon{
+  display: inline-block;width: 32px;height: 32px;border-radius: 50%;margin:0 .5rem;
+  text-align:center;line-height:30px; background-color: var(--main-bg-color); transition: background-color .3s;
+}
+
+#musik-player_tracklist{
+  z-index: 999; position: absolute; top:0; left: 0;
+  background-color: rgba(0,0,0,.8);
+  width: 85%; height: 100%;
+  margin-left: -400px;
+  overflow-y: auto;
+  transition: all .3s ease-in;
+}
+#musik-player_tracklist.active{margin-left: 0;}
+#musik-player_tracklist ol{margin: 0; list-style-type: none; counter-reset: section;}
+#musik-player_tracklist li{padding: 1rem; color: #FFF; border-bottom: 1px solid var(--primary); cursor: pointer;}
+#musik-player_tracklist li:before{counter-increment: section; content: counters(section,".") ") ";}
+#musik-player_tracklist li:hover{background-color: var(--player-bg-color);}
+
+#musik-player_loading{
+  z-index: 9990; position: absolute; top:0; left: 0;
+  background-color: rgba(0,0,0,.8);
+  width: 100%; height: 100%;
+}
+#musik-player_loading .loading{
+  will-change: box-shadow; animation-fill-mode: both; animation: btnloading 1s infinite ease-in-out; animation-delay: -0.16s;
+  z-index: 1000; position: relative; text-indent:-9999px; margin:50% auto 0 auto; width: 50px;
+}
+#musik-player_loading .loading:before,
+#musik-player_loading .loading:after{
+    width: 18px; height: 18px; border-radius: 50%;
+    will-change: box-shadow; animation-fill-mode: both; animation: btnloading 1s infinite ease-in-out;
+    z-index: 1000; position: absolute; top: 15px; left: 34px; content: '';
+}
+#musik-player_loading .loading:before{left: 4px;animation-delay: -0.32s;}
+
+@media (min-width:460px){
+  #musik-player{
+    border:1px solid var(--dark-red);
+    box-shadow: 0 0 33px var(--dark-red);
+    height:600px;
+    max-height:80vh;
+    margin:3rem auto 0 auto;
+    width:360px;
+  }
+  #musik-player_dial{ top: 62%; }
+}
+
+
+.musik-player_social-icon:before{content:" ";width:16px;height:16px;display:block;margin:7px auto 0 auto;}
+.musik-player_social-icon.twitter:hover{background-color: #21a9d0;}
+.musik-player_social-icon.twitter:before{
+  width: 22px; height: 22px;
+        background:url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTcgMTQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTE2LjgsMi40MDAxNjU1NSBDMTYuMTcwNTk2OCwyLjY3MDk0MjI2IDE1LjU0MDk0NDQsMi44NDAwMzc1MiAxNC45MTE3OTA0LDIuOTA3OTQ5NzYgQzE1LjYyMjQzOTEsMi40ODE1MzU2MyAxNi4xMDMwNTg0LDEuODc5MTcyNzIgMTYuMzUzNTIzNywxLjEwMDg2MTAzIEMxNS43MDM1NTk5LDEuNDg2NTI3ODEgMTUuMDA5ODU4MiwxLjc1MDQ1MDk5IDE0LjI3MjE2OTIsMS44OTI2MzA1NiBDMTMuNjIyMzMsMS4yMDIyOTMyNiAxMi44MjM4MzE2LDAuODU3IDExLjg3NjE3NTQsMC44NTcgQzEwLjk2OTI2NjYsMC44NTcgMTAuMTk2MDYzOSwxLjE3Njc0ODI5IDkuNTU2MzE4MSwxLjgxNjM2OTQ4IEM4LjkxNjY5NjkxLDIuNDU1OTkwNjYgOC41OTY5NDg2MiwzLjIyOTE5MzM2IDguNTk2OTQ4NjIsNC4xMzYxMDIxOSBDOC41OTY5NDg2Miw0LjM3OTcxNCA4LjYyMzk4ODkxLDQuNjMwMTc5MzQgOC42NzgxOTQxLDQuODg3MzczNiBDNy4zMzgwMTc2Miw0LjgxOTcxMDU3IDYuMDgwODMxMTUsNC40ODMwMTUzNyA0LjkwNjUxMDA3LDMuODc3Mjg4IEMzLjczMjE4OSwzLjI3MTQzNjAyIDIuNzM1NTYxMjUsMi40NjQzMzk1MSAxLjkxNjYyNjgyLDEuNDU1ODczODQgQzEuNjE4ODA5ODIsMS45NjM0MDg4MyAxLjQ2OTkwMTMyLDIuNTE1MDU1NjIgMS40Njk5MDEzMiwzLjExMDY4OTYxIEMxLjQ2OTkwMTMyLDMuNjcyNDI5NzkgMS42MDE4NjI5MSw0LjE5MzY3MTgzIDEuODY1OTEwNyw0LjY3NDE2NjUzIEMyLjEyOTgzMzg4LDUuMTU0NjYxMjMgMi40ODUyMjA1Miw1LjU0MzgxNzA4IDIuOTMxOTQ2MDEsNS44NDE2MzQwOCBDMi40MDM5NzUwNSw1LjgyMTMyMjcxIDEuOTA5ODk3OSw1LjY4MjUwNzU5IDEuNDQ5NzE0NTcsNS40MjUzMTMzMyBMMS40NDk3MTQ1Nyw1LjQ2NTkzNjA3IEMxLjQ0OTcxNDU3LDYuMjU3ODMwMjEgMS42OTg0MzUzNyw2Ljk1MzE1MTkgMi4xOTU4NzY5OCw3LjU1MjI3NDk2IEMyLjY5MzMxODU5LDguMTUxMzk4MDIgMy4zMjExMDE4Niw4LjUyODU5MTM0IDQuMDc5MTAyMTksOC42ODQyMjg3NiBDMy43OTQ4Njc2NCw4Ljc1ODYyMDcgMy41MDcxNDQwMyw4Ljc5NTg3ODk4IDMuMjE2MTgwNTYsOC43OTU4Nzg5OCBDMy4wMjY2NDkzMyw4Ljc5NTg3ODk4IDIuODIwMTcxMTgsOC43Nzg5MzIwNyAyLjU5Njg3MDc0LDguNzQ1Mjg3NDcgQzIuODA2NzEzMzQsOS40MDE3MzA5NiAzLjE5MjUwNDczLDkuOTQxNDE1MjMgMy43NTQyNDQ5LDEwLjM2NDQ2NDkgQzQuMzE1OTg1MDgsMTAuNzg3NjM5MiA0Ljk1MjI0MTgsMTEuMDA1NzA2IDUuNjYyODkwNDgsMTEuMDE5NDEzMSBDNC40NzE3NDcxLDExLjk1MzIzNzYgMy4xMTQ3NDgzMywxMi40MjAyNzQ0IDEuNTkxODk0MTQsMTIuNDIwMjc0NCBDMS4zMDA4MDYwNywxMi40MjAyNzQ0IDEuMDM2ODgyODksMTIuNDA2OTQxMiAwLjgsMTIuMzc5Nzc2MyBDMi4zMjI4NTQxOCwxMy4zNjEwNzcxIDQuMDAxMzQ1NzgsMTMuODUxNjY1MiA1LjgzNTU5OTQxLDEzLjg1MTY2NTIgQzYuOTk5NzAyNDksMTMuODUxNjY1MiA4LjA5Mjc3ODA5LDEzLjY2NzM2NzUgOS4xMTQ1NzY5OSwxMy4yOTg1MjMgQzEwLjEzNjc0OTcsMTIuOTI5Njc4NiAxMS4wMDk3NjQ3LDEyLjQzNTYwMTQgMTEuNzMzOTk1OCwxMS44MTYxNjcgQzEyLjQ1ODEwMjQsMTEuMTk2OTgxOCAxMy4wODI1MjEyLDEwLjQ4NDU4ODYgMTMuNjA3MDAzMSw5LjY3OTExMTk4IEMxNC4xMzE0ODUsOC44NzM3NTk5OSAxNC41MjIyNjA3LDguMDMyODk0MjcgMTQuNzc5NTc5Niw3LjE1NjM5MDE5IEMxNS4wMzY3NzM5LDYuMjc5NzYxNSAxNS4xNjUzNzEsNS40MDE3NjIxMSAxNS4xNjUzNzEsNC41MjE3Njg5NyBDMTUuMTY1MzcxLDQuMzMyMjM3NzMgMTUuMTYyMDA2NSw0LjE5MDE4Mjc2IDE1LjE1NTE1Myw0LjA5NTM1NDg0IEMxNS43OTgyNjMzLDMuNjI4NTY3MiAxNi4zNDY1NDU2LDMuMDYzMzM3OTYgMTYuOCwyLjQwMDE2NTU1IFoiIGZpbGwtcnVsZT0ibm9uemVybyI+PC9wYXRoPjwvZz48L3N2Zz4=") no-repeat;
+}
+.musik-player_social-icon.facebook:hover{background-color: #3b5998;}
+.musik-player_social-icon.facebook:before{
+  width: 22px; height: 22px;
+      margin:5px auto 0 auto;
+      background:url("data:image/svg+xml;base64,DQo8c3ZnIHdpZHRoPSIyMHB4IiBoZWlnaHQ9IjIzcHgiIHZpZXdCb3g9IjAgMCAyMCAyMyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTEuNTM1Nzg5Myw4LjA3NDY0MjQyIEwxMS41MzU3ODkzLDYuMTc5MDQ1NTUgQzExLjUzNTc4OTMsNS44OTQ0MzU2NyAxMS41NDg4OTc0LDUuNjc0MDU1NTMgMTEuNTc1NjA1MSw1LjUxODM5NjcgQzExLjYwMjE0OTEsNS4zNjI0MTAxNiAxMS42NjI0NDY0LDUuMjA5MDQ1MjUgMTEuNzU2MDA1NSw1LjA1NzY0NjU2IEMxMS44NDk0MDA4LDQuOTA2NDExNzEgMTIuMDAwNzk5NSw0LjgwMTg3NDUyIDEyLjIwOTg3MzksNC43NDQwMzQ5NyBDMTIuNDE5MTEyMiw0LjY4NjAzMTU4IDEyLjY5NzMzMTgsNC42NTcxOTM3MyAxMy4wNDQ1MzMsNC42NTcxOTM3MyBMMTQuOTM5OTY2LDQuNjU3MTkzNzMgTDE0LjkzOTk2NiwwLjg2NiBMMTEuOTA5Njk4MiwwLjg2NiBDMTAuMTU2MTYwNSwwLjg2NiA4Ljg5Njk2MjQzLDEuMjgyMDE4NzEgOC4xMzE2MTI1NCwyLjExNDA1NjEzIEM3LjM2NjI2MjY0LDIuOTQ2MjU3NCA2Ljk4MzY2OTYyLDQuMTcyMDI5NzMgNi45ODM2Njk2Miw1Ljc5MTg2NDY5IEw2Ljk4MzY2OTYyLDguMDc0NjQyNDIgTDQuNzE0LDguMDc0NjQyNDIgTDQuNzE0LDExLjg2NiBMNi45ODM1MDU3NiwxMS44NjYgTDYuOTgzNTA1NzYsMjIuODY2IEwxMS41MzU3ODkzLDIyLjg2NiBMMTEuNTM1Nzg5MywxMS44NjYgTDE0LjU2NjA1NzEsMTEuODY2IEwxNC45NjY1MDk5LDguMDc0NjQyNDIgTDExLjUzNTc4OTMsOC4wNzQ2NDI0MiBaIiBpZD0iU2hhcGUiIGZpbGw9IiNGRkZGRkYiIGZpbGwtcnVsZT0ibm9uemVybyI+PC9wYXRoPjwvZz48L3N2Zz4=") no-repeat;
+}
+.sr-only{position: absolute !important;height: 1px; width: 1px;border: 0; padding: 0;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);}
+
+@keyframes btnloading {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 18px 0 -1.3em var(--primary);
+    }
+    40% {
+      box-shadow: 0 18px 0 0 var(--primary);
+    }
+  }

@@ -1,0 +1,6 @@
+input {
+    border: hidden;
+    border-bottom: 1px solid black;
+    outline: 0;
+    width: 500px;
+}

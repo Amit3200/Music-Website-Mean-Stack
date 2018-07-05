@@ -1,0 +1,61 @@
+.myrecentcontent{
+    background: url('/assets/images/14.jpg');
+    overflow: hidden;
+    height:700px;
+    width:100%;
+    background-attachment:fixed;
+    position: absolute;
+    z-index: -1;
+
+}
+.head1{
+   font-weight: bolder;
+   font-family: 'Horizon','Lato',sans-serif;
+   color:white;
+   margin-top:7.5%;
+   font-size: 70px;
+   margin-left: 70px;
+   overflow: hidden;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
+a:hover{
+    color:black;
+}
+
+.musictrend{
+    transition: 0s;
+    transition: .3s ease-in-out;   
+    transition-delay: 0.3s; 
+    overflow: hidden;
+}
+.musictrend:hover{
+    transition-delay: 0.2s;
+    overflow: hidden;
+    color:black;
+}
+::-webkit-scrollbar {
+	width: 6px;
+	height: 30px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #ffffff;
+	height: 80px; 
+	background-clip: content-box;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #242322; 
+	height: 80px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #545454; 
+	height: 80px;
+}

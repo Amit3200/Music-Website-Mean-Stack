@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<div class="myrecentcontent wow animated slideInUp">
+      <div class="col-sm-12">
+          <h1 class="wow animate slideInLeft head1">
+              My Recent Musics
+          </h1>
+      </div>
+      <div class="col-sm-4 wow animated zoomIn" style="height:380px;">
+          <div class="musictrend wow animated zoomIn" *ngFor="let item of playlistname; let i = index">
+              <a routerLink="/showtracks" routerLinkActive="active" (click)=playlistget(i)>
+             <div class="testbg">
+              <i class="fa fa-headphones" style="overflow: hidden;"></i>
+              <span class="listmu">{{playlistname[i]}}
+                  <br>Track Count : {{trackcount[i]}}
+                  <br>Favorite Count : {{favouritecount[i]}}</span>
+                </div>
+              </a>
+          </div>
+      </div>
+    </div>

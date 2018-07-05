@@ -1,0 +1,11 @@
+.playpos{
+float: right;position: absolute;top:0;left:75%;margin-top:60px;z-index: 1000;
+}
+@media only screen and (max-width:720px){
+    .playpos{
+        position: absolute;
+        right: 0;
+        left: 0;
+        top:500px;
+    }
+}
