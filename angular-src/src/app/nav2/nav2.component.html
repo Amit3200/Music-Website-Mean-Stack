@@ -1,0 +1,45 @@
+<div class="ui top attached tabular menu uihead wow animated zoomIn" style="overflow: hidden;">
+  <a routerLink="/mainpage" routerLinkActive="active" class="active item" style="font-size: 20px;">
+      ZYRIX
+  </a>
+  <!-- <a class="item" style="font-size: 20px;">
+      Music
+  </a> -->
+  <div class="right menu">
+      <div class="item">
+          <div class="ui transparent icon input" style="font-size: 20px;">
+              <input class="inputer" type="text" placeholder="Search Tracks..." [(ngModel)]="searcher" [(ngModel)]="searcher" (keyup.enter)="metasearch()">
+              <i class="fa fa-search" style="cursor: pointer;" (click)="metasearch()"></i>
+          </div>
+      </div>
+      <div class="item">
+          <a routerLink="/signlog" routerLinkActive="active" style="text-decoration: none;color:black; ">
+              <div class="ui transparent icon input" style="font-size: 20px;">
+                  SignUp|Login
+                  <i class="fa fa-user-circle" style="font-size: 23px; padding-left:10px;"></i>
+              </div>
+          </a>
+          <!--<a routerLink="/signlog" routerLinkActive="active">Click</a>-->
+      </div>
+  </div>
+</div>
+<div class="ui bottom attached segment">
+  <p></p>
+</div>
+<div class="container-fluid wow animated slideInUp" style="z-index: 3;">
+  <ul class="list-items">
+      <li class="item-inside">
+          <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      </li>
+      <li class="item-inside">
+          <a routerLink="/trendings" routerLinkActive="active">Trendings</a>
+      </li>
+      <li class="item-inside">
+            <a routerLink="/collections" routerLinkActive="active">Collections</a>
+        </li>
+        <li class="item-inside">
+            <a routerLink="/aboutus" routerLinkActive="active">About</a>
+        </li>
+  </ul>
+</div>
+<app-landingpage></app-landingpage>

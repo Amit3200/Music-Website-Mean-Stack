@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div class="container-fluid wow animated slideInUp backdash" data-wow-duration="1s" data-wow-delay="1s">
+</div>
+<div class="row" style="background-attachment: fixed; margin-right: 0px;margin-left: 0px; overflow: hidden;">
+    <div class="col-sm-9" style="overflow: hidden">
+            <h1 style="font-family: 'Horizon',sans-serif;color:white;font-size: 50px;margin-top:90px;overflow: hidden;" class="wow animated slideInLeft" data-wow-duration="1s" data-wow-delay="1s">Trendings</h1>
+        <div>
+        
+            <h1 class="wow animated zoomIn contenttop" style="margin-top:60px;">
+             <ul class="oper">
+              <li class="animated zoomIn" *ngFor="let item of songname; let i = index" (click)="playme(i)">
+                <img src="http://direct.napster.com/imageserver/v2/albums/{{albumid[i]}}/images/300x300.jpg" class="metama animated zoomIn">
+                <div class="overlay"></div>
+                <span (click)="changer(i)"><i [ngClass]="isSpecial(i)?'doip':'doi'" class="fa fa-heart-o" id="doper{{i}}"></i></span>
+                <h3>{{songname[i]}}</h3>
+              </li>
+            </ul>     
+            </h1>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>

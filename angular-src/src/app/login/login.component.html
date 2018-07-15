@@ -1,0 +1,40 @@
+<div class="ui top attached tabular menu uihead wow animated zoomIn" style="overflow: hidden;">
+        <a  routerLink="/mainpage" routerLinkActive="active" class="active item" style="font-size: 20px;">
+            ZYRIX
+        </a>
+        <a class="item" style="font-size: 20px;">
+            Music
+        </a>
+    </div>
+<div class="container-fluid wow animated slideInUp bg" style="overflow: hidden;">
+  <div class="col-sm-12 wow animated zoomIn">
+  <h1 class="closer">X</h1>
+  </div>
+  <span>&nbsp;</span>
+  <div class="row">
+      <div class="col-sm-6 wow animated slideInLeft" style="color:white;overflow: hidden;">
+          <h1 class="megahead">SignUp</h1>
+          <div class="formsign wow animated zoomIn" data-wow-duration="1s" data-wow-delay="1s">
+              <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+                <input type="text" placeholder="Username" class="formfiller" formControlName="name" required (keydown.space)="$event.preventDefault()"><span class="gap" ></span>
+                <input type="email" placeholder="@email" class="formfiller" formControlName="email"  name="email" required [email]="true" (keydown.space)="$event.preventDefault()" email pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+<span class="gap"></span>
+                <input type="password" placeholder="Password"  class="formfiller" formControlName="password"  name="password" required (keydown.space)="$event.preventDefault()" minlength="5"><br><br>
+                <button type="submit" class="classicsbtn wow animated tada" data-wow-duration="1s" data-wow-delay="2s">SIGN UP ></button>
+            </form>
+          </div>
+       </div>
+       <div class="col-sm-6 wow animated slideInRight" style="overflow: hidden;">
+          <h1 class="megahead"><a routerLink="/dashboard" routerLinkActive="active">Login</a></h1>
+          <div class="formsign login1 wow animated zoomIn" data-wow-duration="1s" data-wow-delay="1s" style="overflow: hidden;">
+              <form [formGroup]="loginForm" (ngSubmit)="onloginSubmit()">
+                <input type="text" placeholder="Username" required class="formfillerin"  formControlName="username" (keydown.space)="$event.preventDefault()"><span class="gap"></span>
+                <input type="password" placeholder="Password" required class="formfillerin" formControlName="pass" (keydown.space)="$event.preventDefault()">
+                <!-- <span class="forget">Forget Password?</span><br><br><br> -->
+                <br><br><br>                
+                <button type="submit" class="classicsbtninverse wow animated tada" data-wow-duration="1s" data-wow-delay="2s">LOGIN ></button>
+            </form>
+          </div>
+      </div>
+  </div>
+</div>

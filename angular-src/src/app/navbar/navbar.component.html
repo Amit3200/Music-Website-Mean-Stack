@@ -1,0 +1,63 @@
+<div class="ui top attached tabular menu uihead wow animated zoomIn" style="overflow: hidden;">
+  <a routerLink="/dashboard" routerLinkActive="active" class="active item" style="font-size: 20px;">
+      ZYRIX
+  </a>
+  <!-- <a class="item" style="font-size: 20px;">
+      Music
+  </a> -->
+  <div class="right menu">
+      <div class="item">
+          <div class="ui transparent icon input" style="font-size: 20px;">
+              <input type="text" placeholder="Search Tracks...." [(ngModel)]="searcher" (keyup.enter)="metasearch()">
+              <i class="fa fa-search" style="cursor: pointer;" (click)="metasearch()"></i>
+          </div>
+      </div>
+      <div class="item">
+          <a href="#" *ngIf="tempuser=='Anonymous'" style="text-decoration: none;color:black; ">
+              <div class="ui transparent icon input" style="font-size: 20px;">
+                  {{tempuser}}
+                  <i class="fa fa-user-circle" style="font-size: 18px; padding-left:10px;"></i>
+              </div>
+          </a>
+          <a  *ngIf="tempuser!='Anonymous'" style="text-decoration: none;color:black; ">
+                <div class="ui transparent icon input" style="font-size: 20px;">
+                    {{tempuser}}
+                    <i class="fa fa-user-circle" style="font-size: 18px; padding-left:10px;"></i>
+                </div>
+            </a>
+      </div>
+      <div class="item">
+            <a href="#" style="text-decoration: none;color:black; ">
+      <div class="ui transparent icon input" style="font-size: 20px;" (click)="logout()" *ngIf="tempuser!='Anonymous'">
+            Logout<i class="fa fa-sign-out" style="font-size: 16px; padding-left:10px;"></i>
+        </div>
+    </a>
+</div>
+  </div>
+</div>
+<div class="ui bottom attached segment">
+  <p></p>
+</div>
+<div class="container-fluid wow animated slideInUp" style="z-index: 3;">
+  <ul class="list-items">
+      <li class="item-inside">
+          <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      </li>
+      <li class="item-inside">
+          <a routerLink="/trendings" routerLinkActive="active">Trendings</a>
+      </li>
+      <li class="item-inside">
+          <a routerLink="/playlists" routerLinkActive="active">Playlist</a>
+      </li>
+      <li class="item-inside">
+            <a routerLink="/collections" routerLinkActive="active">Collections</a>
+        </li>
+        <li class="item-inside">
+                <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
+            </li>
+        <li class="item-inside">
+            <a routerLink="/aboutus" routerLinkActive="active">About</a>
+        </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>

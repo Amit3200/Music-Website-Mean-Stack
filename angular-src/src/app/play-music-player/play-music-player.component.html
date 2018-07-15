@@ -1,0 +1,17 @@
+<audio id="myAudio" (ended)="next()">
+    <source src="{{my[index]}}" type="audio/mpeg">
+</audio>
+<div class='music-card playing' style="margin-top:65px;">  
+    <div class='image'id="megaimage"></div>
+    <div class='wave'></div>
+    <div class='wave'></div>
+    <div class='wave'></div>
+    <div class='info' style="overflow: hidden;">
+      <h2 class='title' id="megatitle" style="overflow: hidden;"></h2>
+      <div class='artist'  id="megaartist" style="overflow: hidden;"></div>
+    </div>
+    <i class="fa fa-play trigger" id="p1" aria-hidden="true" (click)="playAudio()"></i>
+    <i class="fa fa-pause trigger" id="p2" aria-hidden="true" (click)="pauseAudio()"></i>
+    <i class="fa fa-forward forward"  (click)="next()"></i>
+    <i class="fa fa-backward previous"  (click)="previous()"></i>
+  </div>

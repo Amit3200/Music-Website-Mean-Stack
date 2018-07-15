@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="container-fluid wow animated slideInUp backdash" data-wow-duration="1s" data-wow-delay="1s">
+  </div>
+  <div class="row" style="background-attachment: fixed; margin-right: 0px;margin-left: 0px; overflow: hidden;">
+      <div class="col-sm-9" style="overflow: hidden">
+        <img src="/assets/images/art10.jpg" style="margin-top: 10%;overflow: hidden;width: 100px;" class="wow animated zoomIn"><h1 style="font-family: 'Horizon',sans-serif;color:white;font-size: 50px;overflow: hidden;" class="wow animated slideInLeft" data-wow-duration="1s" data-wow-delay="1s">Favourites</h1>
+          <div>
+              <h1 class="wow animated zoomIn contenttop">
+               <ul class="oper">
+                <li class="animated zoomIn" *ngFor="let item of myfav; let i = index" (click)="playme(item)">
+                  <img src="http://direct.napster.com/imageserver/v2/albums/{{albumid[item]}}/images/300x300.jpg" class="metama animated zoomIn">
+                  <div class="overlay"></div>
+                  <span (click)="changer(i)"><i class="fa fa-minus-circle doi" id="doper{{i}}"></i></span>
+                  <h3>{{songname[item]}}</h3>
+                  <h6>{{artist[item]}}</h6>
+                </li>
+              </ul>     
+              </h1>
+          </div>
+      </div>
+  </div>
